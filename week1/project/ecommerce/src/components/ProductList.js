@@ -1,5 +1,6 @@
 import React from "react";
 import products from "../fake-data/all-products";
+import Product from "./Product";
 
 export default function ProductList({ category }) {
   return (
@@ -8,32 +9,10 @@ export default function ProductList({ category }) {
         ? products
             .filter((product) => product.category === category)
             .map((product) => {
-              return (
-                <li className="products-item" key={product.id}>
-                  <div className="product">
-                    <img
-                      className="product-image"
-                      src={product.image}
-                      alt={product.title}
-                    />
-                    <span className="product-title">{product.title}</span>
-                  </div>
-                </li>
-              );
+              return <Product key={product.id} product={product} />;
             })
         : products.map((product) => {
-            return (
-              <li className="products-item" key={product.id}>
-                <div className="product">
-                  <img
-                    className="product-image"
-                    src={product.image}
-                    alt={product.title}
-                  />
-                  <span className="product-title">{product.title}</span>
-                </div>
-              </li>
-            );
+            return <Product key={product.id} product={product} />;
           })}
     </ul>
   );

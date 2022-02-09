@@ -20,16 +20,16 @@ h1 {
 }
 .categories-item {
   background-color: lightslategray;
-  margin: 6px;
-  padding: 12px;
   cursor: pointer;
+}
+.categories-item.clicked {
+  background-color: rgb(83, 96, 109);
 }
 .products {
   display: flex;
   flex-wrap: wrap;
 }
 .products-item {
-  width: calc(100% - 16px);
   margin: 16px 0;
 }
 .product {
@@ -49,18 +49,41 @@ h1 {
   text-overflow: ellipsis;
   text-align: center;
 }
+
+@media (min-width: 360px) {
+  .products-item {
+    width: calc(100% - 16px);
+  }
+  .categories-item {
+    margin: 3px;
+    padding: 12px 6px;
+  }
+}
 @media (min-width: 600px) {
   .products-item {
     width: calc(50% - 16px);
+    margin: 16px 8px;
+  }
+  .categories-item {
+    margin: 6px;
+    padding: 12px;
   }
 }
 @media (min-width: 1000px) {
   .products-item {
     width: calc(33% - 16px);
   }
+  .categories-item {
+    margin: 6px;
+    padding: 12px;
+  }
 }
 @media (min-width: 1600px) {
   .products-item {
     width: calc(25% - 16px);
+  }
+  .categories-item {
+    margin: 6px;
+    padding: 12px;
   }
 }
