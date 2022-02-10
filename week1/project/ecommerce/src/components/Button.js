@@ -1,18 +1,22 @@
 import React from "react";
 
-export default function Button({ category, setCategory }) {
+export default function Button({ stateCategory, category, setCategory }) {
   function handleFilter(e, category) {
-    e.target.classList.add("clicked");
-    if (category) {
-      setCategory(category.split(": ")[1]);
-    } else {
+    console.log("filter", stateCategory);
+    if (stateCategory === category) {
       setCategory(null);
       e.target.classList.remove("clicked");
+    } else {
+      setCategory(category.split(": ")[1]);
+      e.target.classList.add("clicked");
     }
   }
   return (
-    <div className="categories-item" onClick={(e) => handleFilter(e, category)}>
+    <button
+      className="categories-item"
+      onClick={(e) => handleFilter(e, category)}
+    >
       {category}
-    </div>
+    </button>
   );
 }
