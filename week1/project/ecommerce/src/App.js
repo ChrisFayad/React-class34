@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <h1>Products</h1>
-      <CategoryList stateCategory={category} setCategory={setCategory} />
-      <ProductList stateCategory={category} />
+      <CategoryList category={category} setCategory={setCategory} />
+      <ProductList category={category} />
     </div>
   );
 }

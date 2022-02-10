@@ -2,13 +2,12 @@ import React from "react";
 import products from "../fake-data/all-products";
 import Product from "./Product";
 
-export default function ProductList({ stateCategory }) {
-  console.log("product list", stateCategory);
+export default function ProductList({ category }) {
   return (
     <ul className="products">
-      {stateCategory !== null
+      {category !== null
         ? products
-            .filter((product) => product.category === stateCategory)
+            .filter((product) => product.category === category)
             .map((product) => {
               return <Product key={product.id} product={product} />;
             })
