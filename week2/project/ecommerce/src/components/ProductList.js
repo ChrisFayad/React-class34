@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Product from "./Product";
 
-export default function ProductList({ product, loading, error }) {
+export default function ProductList({
+  loading,
+  setLoading,
+  error,
+  setError,
+  category,
+  product,
+  setProduct,
+}) {
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProduct(data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+      }
+    };
+
+    const productFetch = async (selectedCategory) => {
+      try {
+        const response = await fetch(
+          `https://fakestoreapi.com/products/category/${selectedCategory}`
+        );
+        const data = await response.json();
+        setProduct(data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+      }
+    };
+    if (category === null) {
+      fetchAllProducts();
+    } else {
+      productFetch(category);
+    }
+  }, [category]);
   if (loading) {
     return <h3>Loading ...</h3>;
   }

@@ -3,21 +3,23 @@ import CategoryList from "./components/CategoryList";
 import ProductList from "./components/ProductList";
 
 function App() {
-  const [category, setCategory] = useState("");
-  const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [category, setCategory] = useState(null);
+  const [product, setProduct] = useState([]);
   return (
     <div className="App">
       <h1>Products</h1>
-      <CategoryList
-        category={category}
-        setCategory={setCategory}
-        setProduct={setProduct}
+      <CategoryList category={category} setCategory={setCategory} />
+      <ProductList
+        loading={loading}
         setLoading={setLoading}
+        error={error}
         setError={setError}
+        category={category}
+        product={product}
+        setProduct={setProduct}
       />
-      <ProductList product={product} loading={loading} error={error} />
     </div>
   );
 }

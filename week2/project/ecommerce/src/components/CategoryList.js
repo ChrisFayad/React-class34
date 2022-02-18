@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "./Button";
 
-export default function CategoryList({
-  category,
-  setCategory,
-  setProduct,
-  setLoading,
-  setError,
-}) {
+export default function CategoryList({ category, setCategory }) {
   const [categoryName, setCategoryName] = useState([]);
   useEffect(() => {
     const categoryFetch = async () => {
@@ -18,7 +12,7 @@ export default function CategoryList({
       setCategoryName(data);
     };
     categoryFetch();
-  });
+  }, []);
   return (
     <div className="categories">
       {categoryName.map((item, index) => {
@@ -28,9 +22,6 @@ export default function CategoryList({
             category={category}
             setCategory={setCategory}
             categoryName={item}
-            setProduct={setProduct}
-            setLoading={setLoading}
-            setError={setError}
           />
         );
       })}
