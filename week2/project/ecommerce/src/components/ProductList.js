@@ -24,6 +24,7 @@ export default function ProductList({
 
     const productFetch = async (selectedCategory) => {
       try {
+        setLoading(true);
         const response = await fetch(
           `https://fakestoreapi.com/products/category/${selectedCategory}`
         );
@@ -34,18 +35,23 @@ export default function ProductList({
         setError(true);
       }
     };
+
     if (category === null) {
       fetchAllProducts();
+      setLoading(true);
     } else {
       productFetch(category);
     }
   }, [category]);
+
   if (loading) {
     return <h3>Loading ...</h3>;
   }
+
   if (error) {
     return <h3>Something went wrong!</h3>;
   }
+
   return (
     <ul className="products">
       {product.map((item) => {
