@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ul {
+  list-style: none;
+}
+.App {
+  margin: 8px;
+}
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+.Nav ul {
+  display: flex;
+}
+.Nav li {
+  margin-right: 16px;
+}
+h1 {
+  margin-left: 6px;
+}
+.categories {
+  display: flex;
+}
+.categories-item {
+  background-color: lightslategray;
+  cursor: pointer;
+}
+.categories-item.clicked {
+  background-color: rgb(83, 96, 109);
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+.products-item {
+  margin: 16px 0;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.product-details {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 3%;
+}
+.product-details p {
+  margin: 8px 16px;
+}
+.media {
+  display: flex;
+}
+.product-image {
+  width: 100%;
+  object-fit: contain;
+  max-height: 300px;
+}
+.product-heart {
+  width: 30px;
+  margin-top: -200px;
+}
+.product-heart:hover {
+  cursor: pointer;
+}
+.product-title {
+  white-space: nowrap;
+  padding-top: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+@media (min-width: 360px) {
+  .products-item {
+    width: calc(100% - 16px);
+  }
+  .categories-item {
+    margin: 3px;
+    padding: 12px 6px;
+  }
+}
+@media (min-width: 600px) {
+  .products-item {
+    width: calc(50% - 16px);
+    margin: 16px 8px;
+  }
+  .product-details {
+    flex-direction: row;
+  }
+  .categories-item {
+    margin: 6px;
+    padding: 12px;
+  }
+}
+@media (min-width: 1000px) {
+  .products-item {
+    width: calc(33% - 16px);
+  }
+  .categories-item {
+    margin: 6px;
+    padding: 12px;
+  }
+}
+@media (min-width: 1600px) {
+  .products-item {
+    width: calc(25% - 16px);
+  }
+  .categories-item {
+    margin: 6px;
+    padding: 12px;
+  }
+}
