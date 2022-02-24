@@ -1,26 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as EmptyHeart } from "../assets/heart-regular.svg";
 import { ReactComponent as FullHeart } from "../assets/heart-solid.svg";
 import { FavouriteContext } from "../context/FavouriteContext";
 
 export default function Product({ product }) {
-  const [favouriteID, setFavouriteID] = useContext(FavouriteContext);
-  const [favourite, setFavourite] = useState(false);
-  function addFavourite(id) {
-    setFavouriteID((prevFavourite) => [...prevFavourite, id]);
-  }
-
-  function removeFavourite(id) {
-    const currentFavourite = favouriteID;
-    const newFavourite = currentFavourite.filter((item) => item.id !== id);
-    setFavouriteID(newFavourite);
-    console.log(favouriteID);
-  }
+  const { favourite, switchFavourite } = useContext(FavouriteContext);
 
   const handleFavourite = () => {
-    setFavourite(!favourite);
-    favourite ? removeFavourite(product.id) : addFavourite(product.id);
+    switchFavourite(product.id);
   };
 
   return (
@@ -33,7 +21,7 @@ export default function Product({ product }) {
             alt={product.title}
           />
           <div onClick={handleFavourite}>
-            {favourite ? (
+            {favourite(product.id) ? (
               <FullHeart className="product-heart" />
             ) : (
               <EmptyHeart className="product-heart" />

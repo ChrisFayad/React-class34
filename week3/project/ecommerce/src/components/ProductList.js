@@ -3,7 +3,7 @@ import Product from "./Product";
 import { useFetch } from "../hooks/useFetch";
 
 export default function ProductList({ category }) {
-  const [loading, setLoading, error, product, doFetch] = useFetch();
+  const { loading, setLoading, error, product, doFetch } = useFetch();
 
   useEffect(() => {
     const fetchAllProducts = () => {

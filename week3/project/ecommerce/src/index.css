@@ -107,17 +107,9 @@ h1 {
   .products-item {
     width: calc(33% - 16px);
   }
-  .categories-item {
-    margin: 6px;
-    padding: 12px;
-  }
 }
 @media (min-width: 1600px) {
   .products-item {
     width: calc(25% - 16px);
-  }
-  .categories-item {
-    margin: 6px;
-    padding: 12px;
   }
 }

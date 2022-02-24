@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
+import Header from "../components/Header";
 import { ReactComponent as EmptyHeart } from "../assets/heart-regular.svg";
 import { ReactComponent as FullHeart } from "../assets/heart-solid.svg";
 import { FavouriteContext } from "../context/FavouriteContext";
 
 export default function ProductPage() {
-  const [loading, setLoading, error, product, doFetch] = useFetch();
+  const { loading, error, product, doFetch } = useFetch();
   const { id } = useParams();
-  const [favourite, setFavourite] = useState(false);
+  const { favourite, switchFavourite } = useContext(FavouriteContext);
 
   useEffect(() => {
     doFetch(`https://fakestoreapi.com/products/${id}`);
@@ -23,6 +24,7 @@ export default function ProductPage() {
   }
   return (
     <div>
+      <Header title="" />
       <h1>{product.title}</h1>
       <div className="product-details">
         <p>{product.description}</p>
@@ -32,8 +34,8 @@ export default function ProductPage() {
             src={product.image}
             alt={product.title}
           />
-          <div onClick={() => setFavourite(!favourite)}>
-            {favourite ? (
+          <div onClick={() => switchFavourite(product.id)}>
+            {favourite(product.id) ? (
               <FullHeart className="product-heart" />
             ) : (
               <EmptyHeart className="product-heart" />

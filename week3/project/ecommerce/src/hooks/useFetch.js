@@ -15,5 +15,5 @@ export const useFetch = () => {
     }
   };
 
-  return [loading, setLoading, error, product, doFetch];
+  return { loading, setLoading, error, product, doFetch };
 };

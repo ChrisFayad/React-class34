@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
@@ -9,7 +8,6 @@ import { FavouriteProvider } from "./context/FavouriteContext";
 function App() {
   return (
     <>
-      <Header />
       <FavouriteProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
